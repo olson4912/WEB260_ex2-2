@@ -1,0 +1,32 @@
+<?php
+//create flag variable
+$header = false;
+
+//include file for stock and sale price function
+include('./includes/product_functions.inc.php');
+
+//create while loop to check the $header value:
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+  if (!$header) {
+    echo BOX_BEGIN;
+    echo '<h2>' . $category . '</h2><div class="img-box"><p>
+      <img alt"' . $category . '" src="./products/' . $row['g_image'] . '" />'
+      . $row['g_description'] . '</p></div>';
+    echo BOX_END;
+    echo '<p><br clear="all" /></p>';
+    //begin next box:
+    echo BOX_BEGIN;
+    $header = true;
+  } //end of $header IF.
+
+  //print each item
+  echo '<h3>' . $row['name'] . '</h3>
+    <div class="img-box"><p><img alt="' . $row['name'] . '" src="./products' . $row['image'] . '" />' . $row['description'] . '<br />
+    <strong>Price:</strong> ' . get_price($type, $row['price'], $row['sale_price']) . '<br/>
+    <strong>Avalability:</strong> ' . get_stock_status($row['stock']) . '</p>
+    <p><a href="./cart.php?sku=' . $row['sku'] . '&action+add" class="button">Add to Cart</a></p></div>';
+}
+
+//complete HTML:
+echo '<p> <br clear="all" /></p>';
+echo BOX_END;

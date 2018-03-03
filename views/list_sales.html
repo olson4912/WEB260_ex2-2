@@ -1,0 +1,20 @@
+<?php
+
+//include file for stock and sale price function
+include('./includes/product_functions.inc.php');
+
+//start box:
+echo BOX_BEGIN;
+echo '<h2>Current Sale Items</h2>';
+
+//loop through each returned item:
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+  //print each item:
+  echo '<h3 id="' . $row['sku'] . '">' . $row['category'] . '::' . $row['name'] . '</h3>
+    <div class="img-box"><p><img alt="' . $row['name'] . '" src="./products/' . $row['image'] . '" />' .
+    $row['description'] . '<br />' . get_price('goodies', $row['price'], $row['sale_price']) .
+    '<strong>Availability:</strong> ' . get_stock_status($row['stock']) . '</p>
+    <p><a href="./cart.php?sku' . $row['sku'] . '&action=add" class="button">Add To Cart</a></p></div>';
+}
+//complete HTML:
+echo BOX_END;
