@@ -10,20 +10,21 @@ include('./includes/product_functions.inc.php');
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
   if (!$header) {
     //create start of box and general info:
-    echo '<h3>' . $category . '</h2>
+    echo BOX_BEGIN;
+    echo '<h2>' . $category . '</h2>
       <div class="img-box">
-      <p><img alt"' . $category . '" src="./products/' . $row['image'] . '" />' . $row['description'] . '</p>
+      <p><img alt="' . $category . '" src="/caolson/WEB260/ex2-2/products/' . $row['image'] . '" />' . $row['description'] . '</p>
       <p><small>All listed products are currently available.</small>';
 
     //Begin the form and complete the header:
-    echo '<form action="cart.php" method="get">
+    echo '<form action="/caolson/WEB260/ex2-2/cart.php" method="get">
       <input type="hidden" name="action" value="add" />
       <select name="sku">';
       $header = true;
   } //end of $header IF.
 
   //Print each item:
-  echo "<option value="' . $row['sku'] . '">' . $row['name'] . get_price($type, row['price'], $row['sale_price']) . '</option>';
+  echo "<option value="' . $row['sku'] . '">' . $row['name'] . get_price($type, $row['price'], $row['sale_price']) . '</option>';
 }
 
 //complete the HTML:

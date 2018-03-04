@@ -11,7 +11,7 @@ include('./includes/header.html');
 require(MYSQL);
 
 //call select_sale_items function
-$r = mysql_query($dbc, "CALL select_sale_items(false)");
+$r = mysqli_query($dbc, "CALL select_sale_items(false)");
 
 //include home page view:
 include('./views/home.html');
