@@ -1,5 +1,5 @@
 <?php
-require(./includes/config.inc.php);
+require('./includes/config.inc.php');
 
 //start validating the required values:
 $type = $sp_cat = $category = false;
@@ -36,7 +36,7 @@ $r = mysqli_query($dbc, "CALL select_products('$type', $sp_cat)");
 //if records were returned, include the view file:
 if (mysqli_num_rows($r) > 0) {
   if ($type === 'goodies') {
-    inlcude('./views/list_goodies.html');
+    include('./views/list_goodies.html');
   } elseif ($type === 'coffee') {
     include('./views/list_coffees.html');
   }
@@ -46,4 +46,4 @@ if (mysqli_num_rows($r) > 0) {
 
 //complete page
 include('./includes/footer.html');
- ?>
+?>
