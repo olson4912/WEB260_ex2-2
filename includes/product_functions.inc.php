@@ -27,3 +27,65 @@ function get_price($type, $regular, $sales) {
     }
   }
 } //End of get_price() function.
+
+//ch9 function to get just the price for cart
+function get_just_price($regular, $sales) {
+	if ((0 < $sales) && ($sales < $regular)) {
+		return number_format($sales/100, 2);
+	} else {
+		return number_format($regular/100, 2);
+	}
+}
+
+//ch9 function to parse(take apart) the SKU
+function parse_sku($sku) {
+
+	//Grab the first character:
+	$type_abbr = substr($sku, 0, 1);
+
+	//Grab the remaining characters:
+	$pid = substr($sku, 1);
+
+	//Validate the type:
+	if ($type_abbr === 'C') {
+		$type = 'coffee';
+	} elseif ($type_abbr === 'G') {
+		$type = 'goodies';
+	} else {
+		$type = NULL;
+	}
+
+	//Validate the product ID:
+	$pid = (filter_var($pid, FILTER_VALIDATE_INT, array('min_range' => 1))) ? $pid : NULL;
+
+	//Return the values:
+	return array($type, $pid);
+
+} //End of parse_sku() function.
+
+//ch9 function to calculate shipping cost
+function get_shipping($total = 0) {
+
+	//Set the base handling charges:
+	$shipping = 3;
+
+	//Rate is based upon the total:
+	if ($total < 10) {
+		$rate = .25;
+	} elseif ($total < 20) {
+		$rate = .20;
+	} elseif ($total < 50) {
+		$rate = .18;
+	} elseif ($total < 100) {
+		$rate = .16;
+	} else {
+		$rate = .15;
+	}
+
+	//Calculate the shipping total:
+	$shipping = $shipping + ($total * $rate);
+
+	//Return the shipping total:
+	return $shipping;
+
+} //End of get_shipping() function.
