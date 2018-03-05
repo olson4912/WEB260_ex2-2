@@ -6,7 +6,7 @@
 	move items to your cart for purchasing, or remove items entirely.</p>
 
 <!-- form and table -->
-<form action="/wishlist.php" method="POST">
+<form action="/caolson/WEB260/ex2-2/wishlist.php" method="POST">
 <table border="0" cellspacing="8" cellpadding="6">
 	<tr>
 		<th align="center">Item</th>
@@ -28,8 +28,8 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 			value="' . $row['quantity'] . '" size="2" class="small" /></td>
 		<td align="right">$' . number_format($price, 2) . '</td>
 		<td align="right">$' . number_format($subtotal, 2) . '</td>
-		<td align="right"><a href="/cart.php?sku=' . $row['sku'] . '&action=move&qty=' .
-			$row['quantity'] .'">Move to Cart</a><br /><a href="/wishlist.php?sku=' .
+		<td align="right"><a href="/caolson/WEB260/ex2-2/cart.php?sku=' . $row['sku'] . '&action=move&qty=' .
+			$row['quantity'] .'">Move to Cart</a><br /><a href="/caolson/WEB260/ex2-2/wishlist.php?sku=' .
 			$row['sku'] . '&action=remove">Remove from Wish List</a></td>
 	</tr>
 	';

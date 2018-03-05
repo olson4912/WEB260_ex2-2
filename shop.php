@@ -3,12 +3,12 @@
 require('./includes/config.inc.php');
 
 //validate the product type:
-if(isset($_GET['type']) && ($_GET['type'] === 'goodies')) {
-  $page_title = 'Our Goodies, by Category';
-  $type = 'goodies';
+if (isset($_GET['type']) && ($_GET['type'] === 'goodies')) {
+	$page_title = 'Our Goodies, by Category';
+	$type = 'goodies';
 } else {
-  $page_title = 'Our Coffee Products';
-  $type = 'coffee';
+	$page_title = 'Our Coffee Products';
+	$type = 'coffee';
 }
 
 //include header and DB connection:
@@ -22,9 +22,9 @@ $r = mysqli_query($dbc, "CALL select_categories('$type')");
 
 //if records were returned, include the view file:
 if (mysqli_num_rows($r) > 0) {
-  include('./views/list_categories.html');
+	include('./views/list_categories.html');
 } else {
-  include('./views/error.html');
+	include('./views/error.html');
 }
 //complete the page
 include('./includes/footer.html');

@@ -27,9 +27,8 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 	$subtotal = $price * $row['quantity'];
   //print a table row:
   echo '<tr><td>' . $row['category'] . '::' . $row['name'] . '</td>
-		<td align="center"><input type="text" name="quantity[' . $row['sku'] . ']"
-      value="' . $row['quantity'] . '" size="2" class="small" /></td>
-		<td align="right">$' . $price . '</td>
+		<td align="center"><input type="text" name="quantity[' . $row['sku'] . ']" value="' . $row['quantity'] . '" size="2" class="small" /></td>
+    <td align="right">$' . $price . '</td>
 		<td align="right">$' . number_format($subtotal, 2) . '</td>
 		<td align="right"><a href="/caolson/WEB260/ex2-2/wishlist.php?sku=' . $row['sku'] .
       '&action=move&qty=' . $row['quantity'] .'">Move to Wish List</a><br />
@@ -68,10 +67,11 @@ echo '<tr>
 ';
 
 //complete table and create 2 buttons:
-echo '</table><br /><p align="center"><input type="submit" value="Update Quantities" class="button" />
-</form></p><br />
-<p align="center"><a href="http://<?php echo BASE_URL; ?>checkout.php" class="button">Checkout</a></p>';
+echo '</table><br />
+<p align="center"><input type="submit" value="Update Quantities" class="button" /></form></p><br />
+<p align="center"><a href="/caolson/WEB260/ex2-2/checkout.php" class="button">Checkout</a></p>';
 
 //complete the page:
 echo BOX_END;
+
 ?>

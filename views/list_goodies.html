@@ -9,10 +9,12 @@ include('./includes/product_functions.inc.php');
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
   if (!$header) {
     echo BOX_BEGIN;
-    echo '<h2>' . $category . '</h2><div class="img-box"><p>
-      <img alt="' . $category . '" src="/caolson/WEB260/ex2-2/products/' . $row['g_image'] . '" />'
-      . $row['g_description'] . '</p></div>';
-    echo BOX_END;
+		echo '<h2>' . $category . '</h2>
+		  <div class="img-box">
+		  <p><img alt="' . $category . '" src="/caolson/WEB260/ex2-2/products/' . $row['g_image'] . '" />' .
+        $row['g_description'] . '</p>
+		  </div>';
+		echo BOX_END;
     echo '<p><br clear="all" /></p>';
     //begin next box:
     echo BOX_BEGIN;
@@ -21,10 +23,10 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 
   //print each item
   echo '<h3>' . $row['name'] . '</h3>
-    <div class="img-box"><p><img alt="' . $row['name'] . '" src="/caolson/WEB260/ex2-2/products/' . $row['image'] . '" />' .
-    $row['description'] . '<br />' . get_price($type, $row['price'], $row['sale_price']) .
-    '<strong>Availability:</strong> ' . get_stock_status($row['stock']) . '</p>
-    <p><a href="/caolson/WEB260/ex2-2/cart.php?sku=' . $row['sku'] . '&action+add" class="button">Add to Cart</a></p></div>';
+		<div class="img-box"><p><img alt="' . $row['name'] . '" src="/caolson/WEB260/ex2-2/products/' . $row['image']  . '" />' .
+      $row['description'] . '<br />' . get_price($type, $row['price'], $row['sale_price']) .
+		'<strong>Availability:</strong> ' . get_stock_status($row['stock']) . '</p>
+		<p><a href="/caolson/WEB260/ex2-2/cart.php?sku=' . $row['sku'] . '&action=add" class="button">Add to Cart</a></p></div>';
 }
 
 //complete HTML:

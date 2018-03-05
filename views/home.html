@@ -5,12 +5,13 @@ echo '<div class="wrapper">';
 
 //check for sales:
 if (mysqli_num_rows($r) > 0) {
-  echo '<dl class="special fright">
-    <dt><a href="/caolson/WEB260/ex2-2/shop/sales/">Sale Items</a></dt>';
+	echo '<dl class="special fright">
+	<dt><a href="/caolson/WEB260/ex2-2/shop/sales/">Sale Items</a></dt>';
   //print each sale item:
   while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-    echo '<dd><a href="/caolson/WEB260/ex2-2/shop/sales/#' . $row['sku'] . '" title="View This Product">
-      <img alt"" src="/caolson/WEB260/ex2-2/products/' . $row['image'] . '" /><span>' . $row['sale_price'] . '</span></a></dd>';
+   	echo '<dd><a href="/caolson/WEB260/ex2-2/shop/sales/#' . $row['sku'] . '"
+      title="View This Product"><img alt="" src="/caolson/WEB260/ex2-2/products/' . $row['image'] . '" />
+      <span>' . $row['sale_price'] . '</span></a></dd>';
   }
   //complete sales section.
   echo '</dl>';
